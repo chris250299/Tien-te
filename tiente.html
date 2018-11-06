@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <title>Ứng dụng chuyển đổi tiền tệ</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<form>
+    <b>Amount</b>
+    <input type="text" id="amount" name="amount">
+    <b>From Currency</b>
+    <select id="select1" name="from_currency">
+        <option id="VND" value="VND">VND</option>
+        <option id="USD" value="USD">USD</option>
+    </select>
+    <b>To Currency</b>
+    <select id="select2" name="to_currency">
+        <option id="USD2" value="USD">USD</option>
+        <option id="VND2" value="VND">VND</option>
+    </select>
+    <button type="button" id="button" onclick="convertCcy()">Convert</button>
+</form>
+<div id="div">Result</div>
+<script>
+    function convertCcy() {
+        var amount = document.getElementById("amount").value;
+        var from_currency = document.getElementById("select1").value;
+        var to_currency = document.getElementById("select2").value;
+        var result = null;
+        if (from_currency == "USD") {
+            if (to_currency == "VND") {
+                result = amount * 23400;
+            } else if (to_currency == "USD") {
+                result = amount;
+            }
+        } else if (from_currency == "VND") {
+            if (to_currency == "USD") {
+                result = amount / 23400;
+            } else if (to_currency == "VND") {
+                result = amount;
+            }
+
+        }
+        document.getElementById("div").innerHTML = "Result:" +result;
+    }
+
+</script>
+</body>
+</html>
